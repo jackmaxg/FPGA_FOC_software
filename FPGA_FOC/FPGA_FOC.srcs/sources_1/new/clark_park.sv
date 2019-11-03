@@ -20,9 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module clark (U, V, W, alpha, beta, gamma);
+module clark (clk_in, rst, U, V, W, alpha, beta, gamma);
     parameter SIG_WIDTH = 12;
-    input U, V, W;
+    input U, V, W, clk_in, rst;
     output alpha, beta, gamma;
 
     wire [SIG_WIDTH-1:0] U;
@@ -36,10 +36,10 @@ module clark (U, V, W, alpha, beta, gamma);
 endmodule
 
 
-module park(alpha, beta, theta, D, Q);
+module park(clk_in, rst, alpha, beta, theta, D, Q);
     parameter SIG_WIDTH = 12;
     parameter THETA_WIDTH = 16;
-    input alpha, beta, theta;
+    input alpha, beta, theta, clk_in, rst;
     output D, Q;
 
     wire [SIG_WIDTH-1:0] alpha;
@@ -52,9 +52,9 @@ module park(alpha, beta, theta, D, Q);
 endmodule
 
 
-module inv_clark (U, V, W, alpha, beta, gamma);
+module inv_clark (clk_in, rst, U, V, W, alpha, beta, gamma);
     parameter SIG_WIDTH = 12;
-    input alpha, beta, gamma;
+    input alpha, beta, gamma, clk_in, rst;
     output U, V, W;
 
     wire [SIG_WIDTH-1:0] alpha;
@@ -68,10 +68,10 @@ module inv_clark (U, V, W, alpha, beta, gamma);
 endmodule
 
 
-module inv_park(alpha, beta, theta, D, Q);
+module inv_park(clk_in, rst, alpha, beta, theta, D, Q);
     parameter SIG_WIDTH = 12;
     parameter THETA_WIDTH = 16;
-    input D, Q, theta;
+    input D, Q, theta, clk_in, rst;
     output alpha, beta;
 
     wire [SIG_WIDTH-1:0] D;
