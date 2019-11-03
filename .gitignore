@@ -7,6 +7,7 @@
 ##### Source files: Do NOT ignore VHDL, Verilog, block diagrams or EDIF files.
 !*.vhd
 !*.v
+!*.sv
 !*.bd
 !*.edif
 #		IP files: 
