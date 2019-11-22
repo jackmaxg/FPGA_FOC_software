@@ -1,0 +1,1 @@
+cordic_0.vhd,vhdl,xil_defaultlib,../../../../FPGA_FOC.srcs/sources_1/ip/cordic_0/sim/cordic_0.vhd,

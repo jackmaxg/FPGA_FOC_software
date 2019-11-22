@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="clark_park_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="clark_park_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="834045fs"></ZoomEndTime>
+      <Cursor1Time time="275000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="138"></NameColumnWidth>
+      <ValueColumnWidth column_width="147"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject type="logic" fp_name="/clark_park_tb/clk_in">
+      <obj_property name="ElementShortName">clk_in</obj_property>
+      <obj_property name="ObjectShortName">clk_in</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/d_in">
+      <obj_property name="ElementShortName">d_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">d_in[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/q_in">
+      <obj_property name="ElementShortName">q_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">q_in[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/d_out">
+      <obj_property name="ElementShortName">d_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">d_out[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/q_out">
+      <obj_property name="ElementShortName">q_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">q_out[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/theta">
+      <obj_property name="ElementShortName">theta[15:0]</obj_property>
+      <obj_property name="ObjectShortName">theta[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/alpha_in">
+      <obj_property name="ElementShortName">alpha_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">alpha_in[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/beta_in">
+      <obj_property name="ElementShortName">beta_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">beta_in[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/alpha_out">
+      <obj_property name="ElementShortName">alpha_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">alpha_out[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/beta_out">
+      <obj_property name="ElementShortName">beta_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">beta_out[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/u_in">
+      <obj_property name="ElementShortName">u_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">u_in[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/v_in">
+      <obj_property name="ElementShortName">v_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">v_in[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/clark_park_tb/w_in">
+      <obj_property name="ElementShortName">w_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">w_in[15:0]</obj_property>
+   </wvobject>
+</wave_config>
