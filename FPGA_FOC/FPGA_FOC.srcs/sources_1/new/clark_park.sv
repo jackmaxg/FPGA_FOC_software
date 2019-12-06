@@ -32,23 +32,6 @@ module cordic_angle(angle_in, angle_out);
     assign angle_out = (angle_in >>> (INPUT_WIDTH - OUTPUT_WIDTH + 2));
 endmodule
 
-module fixed_point (a, b, c);
-    parameter SIG_WIDTH = 17;
-    input a, b;
-    output c;
-
-    wire signed [SIG_WIDTH-1:0] a;
-    wire signed [SIG_WIDTH-1:0] b;
-    wire signed [SIG_WIDTH-1:0] c;
-
-    wire signed [2*SIG_WIDTH-2:0] c_extended;
-
-    assign c_extended = a * b;
-
-    assign c = c_extended[2*SIG_WIDTH-2:SIG_WIDTH-1];
-
-endmodule
-
 module clark (clk_in, rst, U, V, W, alpha, beta);
     parameter SIG_WIDTH = 16;
     input U, V, W, clk_in, rst;
@@ -70,9 +53,14 @@ module clark (clk_in, rst, U, V, W, alpha, beta);
 
     reg signed [SIG_WIDTH:0] m_in_1 = 0;
     reg signed [SIG_WIDTH:0] m_in_2 = 0;
-    wire signed [SIG_WIDTH:0] m_out;
 
-    fixed_point multiplier(m_in_1, m_in_2, m_out);
+    wire signed [SIG_WIDTH-1:0] m_out;
+
+    fixed_point #(
+        .INT_A(SIG_WIDTH), .FRAC_A(0),
+        .INT_B(0), .FRAC_B(SIG_WIDTH),
+        .INT_C(SIG_WIDTH-1), .FRAC_C(0))
+        multiplier(.a(m_in_1), .b(m_in_2), .c(m_out));
 
     reg index = 0;
     always_ff @(posedge clk_in) begin
@@ -80,14 +68,14 @@ module clark (clk_in, rst, U, V, W, alpha, beta);
             m_in_1 <= U - (V >>> 1) - (W >>> 1);
             m_in_2 <= two_third;
             alpha <= alpha_buf;
-            beta <= m_out[SIG_WIDTH-1:0];
+            beta <= m_out;
             V_buf <= V;
             W_buf <= W;
         end
         else begin
             m_in_1 <= V_buf - W_buf;
             m_in_2 <= root_three;
-            alpha_buf <= m_out[SIG_WIDTH-1:0];
+            alpha_buf <= m_out;
         end
         index <= !index;
     end
@@ -139,13 +127,19 @@ module inv_clark (clk_in, rst, U, V, W, alpha, beta);
 
     reg signed [SIG_WIDTH:0] m_in_1 = 0;
     reg signed [SIG_WIDTH:0] m_in_2 = 0;
-    wire signed [SIG_WIDTH:0] m_out;
 
-    fixed_point multiplier(m_in_1, m_in_2, m_out);
+    wire signed [SIG_WIDTH-1:0] m_out;
+
+    fixed_point #(
+        .INT_A(SIG_WIDTH), .FRAC_A(0),
+        .INT_B(0), .FRAC_B(SIG_WIDTH),
+        .INT_C(SIG_WIDTH-1), .FRAC_C(0))
+        multiplier(.a(m_in_1), .b(m_in_2), .c(m_out));
+
     assign U = alpha_buf;
     assign alpha_signed = (alpha_buf >>> 1);
-    assign V = m_out[SIG_WIDTH-1:0] - alpha_signed;
-    assign W = -m_out[SIG_WIDTH-1:0] - alpha_signed;
+    assign V = m_out - alpha_signed;
+    assign W = -m_out - alpha_signed;
 
     always_ff @(posedge clk_in) begin
         alpha_buf <= alpha;

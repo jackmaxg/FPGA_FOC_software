@@ -28,7 +28,23 @@ module motor_model_tb();
         #5;
     end
 
-    interp my_interp(
+    logic [15:0] index = 0;
+    logic signed [15:0] out_value;
+
+    interp #(
+        .FILENAME("lut.txt"),
+        .TABLE_INDEX_WIDTH(10),
+        .TABLE_DEPTH(16),
+        .INDEX_WIDTH(16))
+    my_interp(
         .clk_in(clk),
-        .index(0));
+        .index(index),
+        .out_value(out_value));
+
+    initial begin
+        for (int i = 0; i < (1 << 16); i = i+1) begin
+            index = i;
+            #10;
+        end
+    end
 endmodule
