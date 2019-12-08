@@ -44,75 +44,14 @@ module motor_model(
     wire signed [SIG_WIDTH-1:0] theta_u = theta;
     wire signed [SIG_WIDTH-1:0] theta_v = theta + third;
     wire signed [SIG_WIDTH-1:0] theta_w = theta - third;
-    
-
-    interp #(
-        .FILENAME("inductance.txt"),
-        .TABLE_DEPTH(SIG_WIDTH),
-        .TABLE_INDEX_WIDTH(TABLE_WIDTH),
-        .INDEX_WIDTH(INDEX_WIDTH)
-    ) l_u (
-        .clk_in(clk_in),
-        .index(theta_u),
-        .out_value(inductance_u));
-
-    interp #(
-        .FILENAME("flux.txt"),
-        .TABLE_DEPTH(SIG_WIDTH),
-        .TABLE_INDEX_WIDTH(TABLE_WIDTH),
-        .INDEX_WIDTH(INDEX_WIDTH)
-    ) phi_u (
-        .clk_in(clk_in),
-        .index(theta_u),
-        .out_value(flux_u));
-
-    interp #(
-        .FILENAME("inductance.txt"),
-        .TABLE_DEPTH(SIG_WIDTH),
-        .TABLE_INDEX_WIDTH(TABLE_WIDTH),
-        .INDEX_WIDTH(INDEX_WIDTH)
-    ) l_v (
-        .clk_in(clk_in),
-        .index(theta_v),
-        .out_value(inductance_v));
-
-    interp #(
-        .FILENAME("flux.txt"),
-        .TABLE_DEPTH(SIG_WIDTH),
-        .TABLE_INDEX_WIDTH(TABLE_WIDTH),
-        .INDEX_WIDTH(INDEX_WIDTH)
-    ) phi_v (
-        .clk_in(clk_in),
-        .index(theta_v),
-        .out_value(flux_v));
-
-    interp #(
-        .FILENAME("inductance.txt"),
-        .TABLE_DEPTH(SIG_WIDTH),
-        .TABLE_INDEX_WIDTH(TABLE_WIDTH),
-        .INDEX_WIDTH(INDEX_WIDTH)
-    ) l_w (
-        .clk_in(clk_in),
-        .index(theta_w),
-        .out_value(inductance_w));
-
-    interp #(
-        .FILENAME("flux.txt"),
-        .TABLE_DEPTH(SIG_WIDTH),
-        .TABLE_INDEX_WIDTH(TABLE_WIDTH),
-        .INDEX_WIDTH(INDEX_WIDTH)
-    ) phi_w (
-        .clk_in(clk_in),
-        .index(theta_w),
-        .out_value(flux_w));
 
 endmodule
 
 module phase_model(clk_in, current, omega, theta, voltage, current_delta);
     input clk_in, current, omega, theta, voltage;
     output current_delta;
-    parameter RESISTANCE = 12345;
     parameter SIG_WIDTH = 32;
+    parameter RESISTANCE = 32'd12345;
     parameter TABLE_WIDTH = 10;
     parameter INDEX_WIDTH = 32;
     parameter INDUCTANCE_FILE = "inductance.txt";
@@ -143,6 +82,12 @@ module phase_model(clk_in, current, omega, theta, voltage, current_delta);
         .INT_B(CURRENT_INT), .FRAC_B(SIG_WIDTH - CURRENT_INT - 1),
         .INT_C(SIG_WIDTH-1), .FRAC_C(0)
     ) back_emf_scale (.a(total_flux), .b(omega), .c(back_emf));
+
+    fixed_point #(
+        .INT_A(SIG_WIDTH-1), .FRAC_A(0),
+        .INT_B(CURRENT_INT), .FRAC_B(SIG_WIDTH - CURRENT_INT - 1),
+        .INT_C(SIG_WIDTH-1), .FRAC_C(0)
+    ) back_emf_scale (.a(current), .b(RESISTANCE), .c(resistance_current));
 
     interp #(
         .FILENAME(INDUCTANCE_FILE),
