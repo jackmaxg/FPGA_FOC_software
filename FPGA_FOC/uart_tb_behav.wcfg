@@ -11,53 +11,49 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1001000000fs"></ZoomStartTime>
-      <ZoomEndTime time="4541000001fs"></ZoomEndTime>
-      <Cursor1Time time="1741000000fs"></Cursor1Time>
+      <ZoomStartTime time="78666666fs"></ZoomStartTime>
+      <ZoomEndTime time="225466667fs"></ZoomEndTime>
+      <Cursor1Time time="141866666fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="138"></NameColumnWidth>
-      <ValueColumnWidth column_width="127"></ValueColumnWidth>
+      <ValueColumnWidth column_width="123"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
-   <wvobject type="logic" fp_name="/uart_tb/sysclk">
-      <obj_property name="ElementShortName">sysclk</obj_property>
-      <obj_property name="ObjectShortName">sysclk</obj_property>
+   <WVObjectSize size="9" />
+   <wvobject type="logic" fp_name="/uart_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/uart_tb/tx_out">
       <obj_property name="ElementShortName">tx_out</obj_property>
       <obj_property name="ObjectShortName">tx_out</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/uart_tb/trig">
-      <obj_property name="ElementShortName">trig</obj_property>
-      <obj_property name="ObjectShortName">trig</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/uart_tb/my_uart_hex/tx/data_buf">
+   <wvobject type="array" fp_name="/uart_tb/my_uart_tx/tx/data_buf">
       <obj_property name="ElementShortName">data_buf[7:0]</obj_property>
       <obj_property name="ObjectShortName">data_buf[7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/uart_tb/my_uart_hex/tx/trig">
-      <obj_property name="ElementShortName">trig</obj_property>
-      <obj_property name="ObjectShortName">trig</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/uart_tb/my_uart_hex/hex_decoder/cr">
-      <obj_property name="ElementShortName">cr</obj_property>
-      <obj_property name="ObjectShortName">cr</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/uart_tb/my_uart_hex/hex_decoder/reset">
-      <obj_property name="ElementShortName">reset</obj_property>
-      <obj_property name="ObjectShortName">reset</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/uart_tb/trig">
       <obj_property name="ElementShortName">trig</obj_property>
       <obj_property name="ObjectShortName">trig</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/uart_tb/my_uart_hex/hex_decoder/hex_out">
-      <obj_property name="ElementShortName">hex_out[7:0]</obj_property>
-      <obj_property name="ObjectShortName">hex_out[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/uart_tb/my_uart_hex/hex_decoder/ready">
+   <wvobject type="logic" fp_name="/uart_tb/ready">
       <obj_property name="ElementShortName">ready</obj_property>
       <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/my_uart_tx/tx_data">
+      <obj_property name="ElementShortName">tx_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/my_uart_tx/uart_ready">
+      <obj_property name="ElementShortName">uart_ready</obj_property>
+      <obj_property name="ObjectShortName">uart_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/my_uart_tx/old_uart_ready">
+      <obj_property name="ElementShortName">old_uart_ready</obj_property>
+      <obj_property name="ObjectShortName">old_uart_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/my_uart_tx/uart_trig">
+      <obj_property name="ElementShortName">uart_trig</obj_property>
+      <obj_property name="ObjectShortName">uart_trig</obj_property>
    </wvobject>
 </wave_config>

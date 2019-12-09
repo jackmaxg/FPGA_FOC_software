@@ -18,7 +18,7 @@
     <Option Name="CompiledLibDirRiviera" Val="$PCACHEDIR/compile_simlib/riviera"/>
     <Option Name="CompiledLibDirActivehdl" Val="$PCACHEDIR/compile_simlib/activehdl"/>
     <Option Name="BoardPart" Val="digilentinc.com:cmod_a7-35t:part0:1.1"/>
-    <Option Name="ActiveSimSet" Val="sim_3"/>
+    <Option Name="ActiveSimSet" Val="sim_pid"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
@@ -31,20 +31,20 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="cmod_a7-35t"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="263"/>
+    <Option Name="WTXSimLaunchSim" Val="311"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="5"/>
-    <Option Name="WTModelSimExportSim" Val="5"/>
-    <Option Name="WTQuestaExportSim" Val="5"/>
-    <Option Name="WTIesExportSim" Val="5"/>
-    <Option Name="WTVcsExportSim" Val="5"/>
-    <Option Name="WTRivieraExportSim" Val="5"/>
-    <Option Name="WTActivehdlExportSim" Val="5"/>
+    <Option Name="WTXSimExportSim" Val="8"/>
+    <Option Name="WTModelSimExportSim" Val="8"/>
+    <Option Name="WTQuestaExportSim" Val="8"/>
+    <Option Name="WTIesExportSim" Val="8"/>
+    <Option Name="WTVcsExportSim" Val="8"/>
+    <Option Name="WTRivieraExportSim" Val="8"/>
+    <Option Name="WTActivehdlExportSim" Val="8"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -56,6 +56,66 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/new/abi_encoder.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/adc.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/clark_park.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/toAaronWithLove/clock_divider.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../toAaronWithLove/clock_divider.sv"/>
+          <Attr Name="ImportTime" Val="1575866650"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/fixed_point.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/pid.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/toAaronWithLove/svpwm.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../toAaronWithLove/svpwm.sv"/>
+          <Attr Name="ImportTime" Val="1575873710"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/synchronize.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/uart.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -70,33 +130,10 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/clark_park.sv">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/fixed_point.sv">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/adc.sv">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="cmod_a7_test"/>
+        <Option Name="TopAutoSet" Val="TRUE"/>
       </Config>
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -218,7 +255,6 @@
     <FileSet Name="cordic_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/cordic_0">
       <File Path="$PSRCDIR/sources_1/ip/cordic_0/cordic_0.xci">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -227,6 +263,44 @@
       <Config>
         <Option Name="TopModule" Val="cordic_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="clk_wiz_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_0">
+      <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="clk_wiz_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="sim_pid" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_pid">
+      <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_pid/new/pid_tb.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/pid_tb_behav.wcfg">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="DesignMode" Val="RTL"/>
+        <Option Name="TopModule" Val="pid_tb"/>
+        <Option Name="TopLib" Val="xil_defaultlib"/>
+        <Option Name="TransportPathDelay" Val="0"/>
+        <Option Name="TransportIntDelay" Val="0"/>
+        <Option Name="SelectedSimModel" Val="rtl"/>
+        <Option Name="SrcSet" Val="sources_1"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/pid_tb_behav.wcfg"/>
       </Config>
     </FileSet>
   </FileSets>
@@ -267,9 +341,17 @@
     </Run>
     <Run Id="cordic_0_synth_1" Type="Ft3:Synth" SrcSet="cordic_0" Part="xc7a35tcpg236-1" ConstrsSet="cordic_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/cordic_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="clk_wiz_0_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_0" Part="xc7a35tcpg236-1" ConstrsSet="clk_wiz_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -297,9 +379,24 @@
     </Run>
     <Run Id="cordic_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="cordic_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="cordic_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design" EnableStepBool="1"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="clk_wiz_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="clk_wiz_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_wiz_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

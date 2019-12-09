@@ -98,6 +98,7 @@ module clark_park_tb(
             theta = theta + 16'h1000;
             #2000;
         end
+        $finish;
     end
         
     
