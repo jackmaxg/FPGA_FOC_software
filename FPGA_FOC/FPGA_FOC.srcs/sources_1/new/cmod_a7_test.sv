@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module cmod_a7_test(led, btn, sysclk, uart_rxd_out, ja,
+module cmod_a7_test(led, btn, sysclk, uart_rxd_out, uart_txd_in, ja,
     pio39, pio40, pio41,
     pio36, pio37, pio38,
     pio32, pio33, pio34, pio35);
@@ -28,16 +28,18 @@ module cmod_a7_test(led, btn, sysclk, uart_rxd_out, ja,
     wire clk_100mhz;
     wire sysclk;
 
-    input sysclk, pio40, pio37, btn, ja;
+    input sysclk, pio40, pio37, btn, ja, uart_txd_in;
     output led, uart_rxd_out, pio39, pio41, pio36, pio38;
     output pio32, pio33, pio34, pio35;
     clk_wiz_0 sys_clk_gen(.clk_in1(sysclk), .clk_out1(clk_100mhz), .reset(0));
 
     wire ja[7:0];
     wire uart_rxd_out;
+    wire uart_txd_in;
     reg [25:0] ctr = 0;
     reg [7:0] data = 8'h41;
-    wire trig = (ctr[20:0] == 0);
+    reg send_enable = 1;
+    wire trig = send_enable && (ctr[20:0] == 0);
     wire pio39, pio40, pio41;
     wire [1:0] btn;
     wire [1:0] led;
@@ -83,8 +85,8 @@ module cmod_a7_test(led, btn, sysclk, uart_rxd_out, ja,
     wire signed [15:0] Q_voltage;
     wire signed [15:0] D_current;
     wire signed [15:0] Q_current;
-    reg signed [15:0] D_current_setpoint = 16'h000;
-    reg signed [15:0] Q_current_setpoint = 16'h100;
+    reg signed [15:0] D_current_setpoint = 16'h0000;
+    reg signed [15:0] Q_current_setpoint = 16'h0200;
     wire signed [15:0] D_err = D_current - D_current_setpoint;
     wire signed [15:0] Q_err = Q_current - Q_current_setpoint;
     pid D_pid (
@@ -196,6 +198,13 @@ module cmod_a7_test(led, btn, sysclk, uart_rxd_out, ja,
         .theta(enc_theta),
         .ready(enc_ready));
 
+    wire [7:0] uart_rx_sel;
+    wire [15:0] uart_rx_payload;
+    wire uart_rx_ready;
+    wire uart_rx_valid;
+    uart_rx_decoder rx_dec(
+        .clk(clk_100mhz), .rx_in(uart_txd_in), .sel(uart_rx_sel), .payload(uart_rx_payload), .ready(uart_rx_ready), .valid(uart_rx_valid));
+
 
     wire uart_ready;
     wire [23:0] gv_hex_out;
@@ -213,8 +222,29 @@ module cmod_a7_test(led, btn, sysclk, uart_rxd_out, ja,
         .data(theta_elec),
         .hex_out(enc_hex_out));
 
-    wire [103:0] uart_data = {gv_hex_out, 8'h20, gw_hex_out, 8'h20, enc_hex_out, 8'h0A, 8'h0D};
-    uart_tx_buf #(.BYTES(13)) my_uart_tx(
+    wire [31:0] Q_cur_hex;
+    data_to_hex_reg #(.DIGITS(4)) q_cur_hex(
+        .data(Q_current),
+        .hex_out(Q_cur_hex));
+
+    wire [31:0] D_cur_hex;
+    data_to_hex_reg #(.DIGITS(4)) d_cur_hex(
+        .data(D_current),
+        .hex_out(D_cur_hex));
+
+    wire [31:0] Q_set_hex;
+    data_to_hex_reg #(.DIGITS(4)) q_set_hex(
+        .data(Q_current_setpoint),
+        .hex_out(Q_set_hex));
+
+    wire [31:0] D_set_hex;
+    data_to_hex_reg #(.DIGITS(4)) d_set_hex(
+        .data(D_current_setpoint),
+        .hex_out(D_set_hex));
+
+    parameter TX_BYTES = 24;
+    wire [TX_BYTES*8-1:0] uart_data = {Q_set_hex, 8'h20, Q_cur_hex, 32'h20202020, D_set_hex, 8'h20, D_cur_hex, 16'h0A0D};
+    uart_tx_buf #(.BYTES(TX_BYTES)) my_uart_tx(
         .clk(clk_100mhz),
         .data(uart_data),
         .trig(trig),
@@ -226,6 +256,13 @@ module cmod_a7_test(led, btn, sysclk, uart_rxd_out, ja,
         if (btn[1] || !enc_ready)
             gsdn <= enc_ready;
         theta_elec <= enc_comp * 3;
+        send_enable <= uart_rx_ready;
+        if (uart_rx_ready && uart_rx_valid) begin
+            case (uart_rx_sel)
+                8'h51 : Q_current_setpoint <= uart_rx_payload;
+                8'h49 : D_current_setpoint <= uart_rx_payload;
+            endcase
+        end
     end
 endmodule
 

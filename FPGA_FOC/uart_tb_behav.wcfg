@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="78666666fs"></ZoomStartTime>
-      <ZoomEndTime time="225466667fs"></ZoomEndTime>
-      <Cursor1Time time="141866666fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="7420000001fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="138"></NameColumnWidth>
-      <ValueColumnWidth column_width="123"></ValueColumnWidth>
+      <ValueColumnWidth column_width="115"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="9" />
+   <WVObjectSize size="34" />
    <wvobject type="logic" fp_name="/uart_tb/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -55,5 +55,105 @@
    <wvobject type="logic" fp_name="/uart_tb/my_uart_tx/uart_trig">
       <obj_property name="ElementShortName">uart_trig</obj_property>
       <obj_property name="ObjectShortName">uart_trig</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_data">
+      <obj_property name="ElementShortName">rx_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rx_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_ready">
+      <obj_property name="ElementShortName">rx_ready</obj_property>
+      <obj_property name="ObjectShortName">rx_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/uart_rx_thing_ready">
+      <obj_property name="ElementShortName">uart_rx_thing_ready</obj_property>
+      <obj_property name="ObjectShortName">uart_rx_thing_ready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/payload">
+      <obj_property name="ElementShortName">payload[15:0]</obj_property>
+      <obj_property name="ObjectShortName">payload[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_dec_thing/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_dec_thing/rx_in">
+      <obj_property name="ElementShortName">rx_in</obj_property>
+      <obj_property name="ObjectShortName">rx_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_dec_thing/ready">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/payload">
+      <obj_property name="ElementShortName">payload[15:0]</obj_property>
+      <obj_property name="ObjectShortName">payload[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/payload_buf">
+      <obj_property name="ElementShortName">payload_buf[0:3][3:0]</obj_property>
+      <obj_property name="ObjectShortName">payload_buf[0:3][3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_dec_thing/uart_ready">
+      <obj_property name="ElementShortName">uart_ready</obj_property>
+      <obj_property name="ObjectShortName">uart_ready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/uart_data">
+      <obj_property name="ElementShortName">uart_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">uart_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/index">
+      <obj_property name="ElementShortName">index[7:0]</obj_property>
+      <obj_property name="ObjectShortName">index[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_dec_thing/uart_ready_old">
+      <obj_property name="ElementShortName">uart_ready_old</obj_property>
+      <obj_property name="ObjectShortName">uart_ready_old</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/sel">
+      <obj_property name="ElementShortName">sel[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sel[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/PAYLOAD_LEN">
+      <obj_property name="ElementShortName">PAYLOAD_LEN[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PAYLOAD_LEN[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_dec_thing/rx/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_dec_thing/rx/rx_in">
+      <obj_property name="ElementShortName">rx_in</obj_property>
+      <obj_property name="ObjectShortName">rx_in</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/rx/data">
+      <obj_property name="ElementShortName">data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_dec_thing/rx/ready">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/uart_tb/rx_dec_thing/rx/waiting">
+      <obj_property name="ElementShortName">waiting</obj_property>
+      <obj_property name="ObjectShortName">waiting</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/rx/data_buf">
+      <obj_property name="ElementShortName">data_buf[9:0]</obj_property>
+      <obj_property name="ObjectShortName">data_buf[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/rx/ctr">
+      <obj_property name="ElementShortName">ctr[10:0]</obj_property>
+      <obj_property name="ObjectShortName">ctr[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/rx/index">
+      <obj_property name="ElementShortName">index[3:0]</obj_property>
+      <obj_property name="ObjectShortName">index[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/rx/one_ctr">
+      <obj_property name="ElementShortName">one_ctr[10:0]</obj_property>
+      <obj_property name="ObjectShortName">one_ctr[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/uart_tb/rx_dec_thing/rx/BAUD_SCALER">
+      <obj_property name="ElementShortName">BAUD_SCALER[31:0]</obj_property>
+      <obj_property name="ObjectShortName">BAUD_SCALER[31:0]</obj_property>
    </wvobject>
 </wave_config>
